@@ -128,7 +128,7 @@ MonoBehaviour:
   SupportedGhostModes: 3
   OptimizationMode: 0
   Importance: 1
-  prefabId: 
+  prefabId: ad709e404d052d14bbcc928507193b88
   Name: Cube
 --- !u!114 &8789694384018129532
 MonoBehaviour:

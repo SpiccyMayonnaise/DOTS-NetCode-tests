@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.Entities;
-using Unity.NetCode;
-using UnityEngine;
+﻿using Unity.NetCode;
 
 public struct CubeInput : ICommandData {
     public uint Tick { get; set; }
     public int horizontal;
     public int vertical;
+
+    public bool up;
 }
