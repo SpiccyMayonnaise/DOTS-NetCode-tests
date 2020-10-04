@@ -17,13 +17,15 @@ public class SampleCubeInputSystem : SystemBase {
         var localInput = GetSingleton<CommandTargetComponent>().targetEntity;
         if (localInput == Entity.Null) {
             var localPlayerId = GetSingleton<NetworkIdComponent>().Value;
+            var commandTarget = GetSingletonEntity<CommandTargetComponent>();
+
             Entities
                 .WithAll<MovableCube>()
                 .WithNone<CubeInput>()
                 .ForEach((Entity ent, int entityInQueryIndex, ref GhostOwnerComponent ghostOwner) => {
                     if (ghostOwner.NetworkId == localPlayerId) {
                         ecb.AddBuffer<CubeInput>(entityInQueryIndex, ent);
-                        ecb.SetComponent(entityInQueryIndex, GetSingletonEntity<CommandTargetComponent>(), new CommandTargetComponent { targetEntity = ent });
+                        ecb.SetComponent(entityInQueryIndex, commandTarget, new CommandTargetComponent { targetEntity = ent });
                     }
                 })
                 .ScheduleParallel();
